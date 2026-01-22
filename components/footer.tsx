@@ -1,25 +1,8 @@
+"use client"
+
 import Image from "next/image"
 import { Linkedin, Twitter, Instagram, Github } from "lucide-react"
-
-const footerLinks = {
-  services: [
-    { label: "Website Development", href: "#services" },
-    { label: "E-Commerce Solutions", href: "#services" },
-    { label: "Landing Pages", href: "#services" },
-    { label: "IT Outsourcing", href: "#services" },
-  ],
-  company: [
-    { label: "About Us", href: "#" },
-    { label: "Our Process", href: "#process" },
-    { label: "Portfolio", href: "#portfolio" },
-    { label: "Careers", href: "#" },
-  ],
-  legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
-    { label: "Cookie Policy", href: "#" },
-  ]
-}
+import { useLanguage } from "@/lib/language-context"
 
 const socialLinks = [
   { icon: Linkedin, href: "#", label: "LinkedIn" },
@@ -29,6 +12,28 @@ const socialLinks = [
 ]
 
 export function Footer() {
+  const { t } = useLanguage()
+
+  const footerLinks = {
+    services: [
+      { label: t.footer.links.websiteDev, href: "#services" },
+      { label: t.footer.links.ecommerce, href: "#services" },
+      { label: t.footer.links.landing, href: "#services" },
+      { label: t.footer.links.outsourcing, href: "#services" },
+    ],
+    company: [
+      { label: t.footer.links.about, href: "#" },
+      { label: t.footer.links.process, href: "#process" },
+      { label: t.footer.links.portfolio, href: "#portfolio" },
+      { label: t.footer.links.careers, href: "#" },
+    ],
+    legal: [
+      { label: t.footer.links.privacy, href: "#" },
+      { label: t.footer.links.terms, href: "#" },
+      { label: t.footer.links.cookies, href: "#" },
+    ]
+  }
+
   return (
     <footer className="bg-card border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
@@ -43,7 +48,7 @@ export function Footer() {
               className="h-12 w-auto mb-4"
             />
             <p className="text-muted-foreground mb-6 max-w-sm">
-              Where code meets instinct. We build digital experiences that transform businesses and captivate audiences.
+              {t.footer.tagline}
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
@@ -61,7 +66,7 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="font-bold text-foreground mb-4">Services</h3>
+            <h3 className="font-bold text-foreground mb-4">{t.footer.services}</h3>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
@@ -78,7 +83,7 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="font-bold text-foreground mb-4">Company</h3>
+            <h3 className="font-bold text-foreground mb-4">{t.footer.company}</h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
@@ -95,7 +100,7 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="font-bold text-foreground mb-4">Legal</h3>
+            <h3 className="font-bold text-foreground mb-4">{t.footer.legal}</h3>
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.label}>
@@ -114,10 +119,10 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} CODILEO. All rights reserved.
+            &copy; {new Date().getFullYear()} CODILEO. {t.footer.copyright}
           </p>
           <p className="text-sm text-muted-foreground">
-            Crafted with precision in the digital realm.
+            {t.footer.crafted}
           </p>
         </div>
       </div>

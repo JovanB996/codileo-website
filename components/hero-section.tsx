@@ -2,8 +2,18 @@
 
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Code2, Sparkles } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
 
 export function HeroSection() {
+  const { t } = useLanguage()
+
+  const stats = [
+    { value: "150+", label: t.hero.stats.projects },
+    { value: "98%", label: t.hero.stats.satisfaction },
+    { value: "50+", label: t.hero.stats.clients },
+    { value: "8+", label: t.hero.stats.experience },
+  ]
+
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       {/* Background Pattern */}
@@ -27,31 +37,29 @@ export function HeroSection() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-secondary/50 border border-border rounded-full px-4 py-2 mb-8">
             <Sparkles className="h-4 w-4 text-primary" />
-            <span className="text-sm text-muted-foreground">Premium IT Solutions</span>
+            <span className="text-sm text-muted-foreground">{t.hero.badge}</span>
           </div>
 
           {/* Main Heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-foreground leading-tight mb-6 text-balance">
-            We Build Digital
+            {t.hero.heading1}
             <br />
-            <span className="text-primary">Experiences</span> That
+            <span className="text-primary">{t.hero.heading2}</span> {t.hero.heading3}
             <br />
             <span className="inline-flex items-center gap-3">
               <Code2 className="h-10 w-10 md:h-14 md:w-14 text-primary" />
-              <span>Convert</span>
+              <span>{t.hero.heading4}</span>
             </span>
           </h1>
 
           {/* Slogan */}
           <p className="text-xl md:text-2xl text-primary font-medium mb-4">
-            Where code meets instinct.
+            {t.hero.slogan}
           </p>
 
           {/* Description */}
           <p className="max-w-2xl mx-auto text-muted-foreground text-lg md:text-xl mb-10 text-pretty">
-            CODILEO transforms your vision into powerful digital solutions. From stunning websites 
-            to high-converting e-commerce platforms, we combine technical excellence with 
-            creative instinct.
+            {t.hero.description}
           </p>
 
           {/* CTA Buttons */}
@@ -62,7 +70,7 @@ export function HeroSection() {
               className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6"
             >
               <a href="#contact">
-                Start Your Project
+                {t.hero.cta}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </a>
             </Button>
@@ -72,18 +80,13 @@ export function HeroSection() {
               size="lg" 
               className="border-border text-foreground hover:bg-secondary text-lg px-8 py-6 bg-transparent"
             >
-              <a href="#portfolio">View Our Work</a>
+              <a href="#portfolio">{t.hero.viewWork}</a>
             </Button>
           </div>
 
           {/* Stats Preview */}
           <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {[
-              { value: "150+", label: "Projects Delivered" },
-              { value: "98%", label: "Client Satisfaction" },
-              { value: "50+", label: "Happy Clients" },
-              { value: "8+", label: "Years Experience" },
-            ].map((stat) => (
+            {stats.map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.value}</div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>

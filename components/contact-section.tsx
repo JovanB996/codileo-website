@@ -1,19 +1,18 @@
 "use client"
 
-import React from "react"
-
-import { useState } from "react"
+import React, { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
 
 export function ContactSection() {
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const { t } = useLanguage()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Simulate form submission
     setIsSubmitted(true)
     setTimeout(() => setIsSubmitted(false), 3000)
   }
@@ -23,23 +22,23 @@ export function ContactSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-primary font-medium text-sm uppercase tracking-wider">Contact Us</span>
+          <span className="text-primary font-medium text-sm uppercase tracking-wider">{t.contact.label}</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mt-4 mb-6 text-balance">
-            Let&apos;s Build Something
+            {t.contact.heading1}
             <br />
-            <span className="text-primary">Amazing Together</span>
+            <span className="text-primary">{t.contact.heading2}</span>
           </h2>
           <p className="max-w-2xl mx-auto text-muted-foreground text-lg">
-            Ready to transform your digital presence? Get in touch and let&apos;s discuss how we can help you achieve your goals.
+            {t.contact.description}
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div>
-            <h3 className="text-2xl font-bold text-foreground mb-6">Get In Touch</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-6">{t.contact.getInTouch}</h3>
             <p className="text-muted-foreground mb-8">
-              We&apos;re here to help and answer any questions you might have. We look forward to hearing from you.
+              {t.contact.getInTouchDesc}
             </p>
 
             <div className="space-y-6">
@@ -48,8 +47,8 @@ export function ContactSection() {
                   <Mail className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-foreground">Email</h4>
-                  <p className="text-muted-foreground">office@codileo.com</p>
+                  <h4 className="font-bold text-foreground">{t.contact.email}</h4>
+                  <p className="text-muted-foreground">hello@codileo.com</p>
                 </div>
               </div>
 
@@ -58,8 +57,8 @@ export function ContactSection() {
                   <Phone className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-foreground">Phone</h4>
-                  <p className="text-muted-foreground">(+381) 69-570-91-75</p>
+                  <h4 className="font-bold text-foreground">{t.contact.phone}</h4>
+                  <p className="text-muted-foreground">+1 (555) 123-4567</p>
                 </div>
               </div>
 
@@ -68,8 +67,8 @@ export function ContactSection() {
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-foreground">Location</h4>
-                  <p className="text-muted-foreground">Zemun 11080<br /> Belgrade, Serbia</p>
+                  <h4 className="font-bold text-foreground">{t.contact.location}</h4>
+                  <p className="text-muted-foreground">123 Innovation Street<br />Tech City, TC 10001</p>
                 </div>
               </div>
             </div>
@@ -80,31 +79,31 @@ export function ContactSection() {
             {isSubmitted ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12">
                 <CheckCircle2 className="h-16 w-16 text-primary mb-4" />
-                <h3 className="text-2xl font-bold text-foreground mb-2">Message Sent!</h3>
-                <p className="text-muted-foreground">We&apos;ll get back to you within 24 hours.</p>
+                <h3 className="text-2xl font-bold text-foreground mb-2">{t.contact.form.success}</h3>
+                <p className="text-muted-foreground">{t.contact.form.successDesc}</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                      Name
+                      {t.contact.form.name}
                     </label>
                     <Input 
                       id="name" 
-                      placeholder="Your name" 
+                      placeholder={t.contact.form.namePlaceholder}
                       required
                       className="bg-secondary border-border text-foreground placeholder:text-muted-foreground"
                     />
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                      Email
+                      {t.contact.form.email}
                     </label>
                     <Input 
                       id="email" 
                       type="email" 
-                      placeholder="your@email.com" 
+                      placeholder={t.contact.form.emailPlaceholder}
                       required
                       className="bg-secondary border-border text-foreground placeholder:text-muted-foreground"
                     />
@@ -113,39 +112,39 @@ export function ContactSection() {
 
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
-                    Company
+                    {t.contact.form.company}
                   </label>
                   <Input 
                     id="company" 
-                    placeholder="Your company name"
+                    placeholder={t.contact.form.companyPlaceholder}
                     className="bg-secondary border-border text-foreground placeholder:text-muted-foreground"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="service" className="block text-sm font-medium text-foreground mb-2">
-                    Service Interested In
+                    {t.contact.form.service}
                   </label>
                   <select 
                     id="service"
                     className="w-full h-10 px-3 rounded-md bg-secondary border border-border text-foreground"
                   >
-                    <option value="">Select a service</option>
-                    <option value="website">Website Development</option>
-                    <option value="ecommerce">E-Commerce Solutions</option>
-                    <option value="landing">Landing Pages</option>
-                    <option value="outsourcing">IT Outsourcing</option>
-                    <option value="custom">Custom Development</option>
+                    <option value="">{t.contact.form.servicePlaceholder}</option>
+                    <option value="website">{t.contact.form.serviceOptions.website}</option>
+                    <option value="ecommerce">{t.contact.form.serviceOptions.ecommerce}</option>
+                    <option value="landing">{t.contact.form.serviceOptions.landing}</option>
+                    <option value="outsourcing">{t.contact.form.serviceOptions.outsourcing}</option>
+                    <option value="custom">{t.contact.form.serviceOptions.custom}</option>
                   </select>
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                    Message
+                    {t.contact.form.message}
                   </label>
                   <Textarea 
                     id="message" 
-                    placeholder="Tell us about your project..." 
+                    placeholder={t.contact.form.messagePlaceholder}
                     rows={4}
                     required
                     className="bg-secondary border-border text-foreground placeholder:text-muted-foreground resize-none"
@@ -157,7 +156,7 @@ export function ContactSection() {
                   size="lg" 
                   className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                 >
-                  Send Message
+                  {t.contact.form.submit}
                   <Send className="ml-2 h-4 w-4" />
                 </Button>
               </form>

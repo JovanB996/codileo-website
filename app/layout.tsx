@@ -2,6 +2,8 @@ import React from "react"
 import type { Metadata } from 'next'
 import { Inter, Space_Grotesk } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { LanguageProvider } from '@/lib/language-context'
+import { ThemeProvider } from '@/lib/theme-context'
 import './globals.css'
 
 const _inter = Inter({ subsets: ["latin"] });
@@ -32,9 +34,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans antialiased`}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className="font-sans antialiased">
+        <ThemeProvider>
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

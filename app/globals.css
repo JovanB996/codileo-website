@@ -4,7 +4,46 @@
 @custom-variant dark (&:is(.dark *));
 
 /* CODILEO Brand Theme - Dark Navy with Teal/Cyan Accent */
+
+/* Light Mode */
 :root {
+  --background: #f8fafc;
+  --foreground: #0a0f1a;
+  --card: #ffffff;
+  --card-foreground: #0a0f1a;
+  --popover: #ffffff;
+  --popover-foreground: #0a0f1a;
+  --primary: #1a7a9c;
+  --primary-foreground: #ffffff;
+  --secondary: #e8f4f8;
+  --secondary-foreground: #0a0f1a;
+  --muted: #e8f4f8;
+  --muted-foreground: #4a6b7c;
+  --accent: #1a8aad;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #fef2f2;
+  --border: #d1e3eb;
+  --input: #d1e3eb;
+  --ring: #2596be;
+  --chart-1: #2596be;
+  --chart-2: #1a8aad;
+  --chart-3: #4a6b7c;
+  --chart-4: #3eb5d5;
+  --chart-5: #14b8a6;
+  --radius: 0.625rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0a0f1a;
+  --sidebar-primary: #2596be;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e8f4f8;
+  --sidebar-accent-foreground: #0a0f1a;
+  --sidebar-border: #d1e3eb;
+  --sidebar-ring: #2596be;
+}
+
+/* Dark Mode */
+.dark {
   --background: #0a0f1a;
   --foreground: #e8f4f8;
   --card: #0d1420;
@@ -29,7 +68,6 @@
   --chart-3: #7a9fb8;
   --chart-4: #3eb5d5;
   --chart-5: #14b8a6;
-  --radius: 0.625rem;
   --sidebar: #0d1420;
   --sidebar-foreground: #e8f4f8;
   --sidebar-primary: #2596be;
